@@ -14,14 +14,6 @@ spring:
           auth: true
           starttls:
             enable: true
-  datasource:
-    url: jdbc:mysql://localhost:3306/job_application
-    username: root
-    password: pavankumar
-    driver-class-name: com.mysql.cj.jdbc.Driver
-  jpa:
-    hibernate:
-      ddl-auto: update
-    show-sql: true
+
 server:
   port: 9091
