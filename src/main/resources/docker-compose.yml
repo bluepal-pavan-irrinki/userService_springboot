@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  db:
+    image: mysql:8.0
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: pavankumar
+      MYSQL_DATABASE: job_application
+    ports:
+      - "3306:3306"
+    networks:
+      - mynetwork
+
+  app:
+    image: your-app-image
+    container_name: spring_app
+    depends_on:
+      - db
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/job_application
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: pavankumar
+    ports:
+      - "9091:9091"
+    networks:
+      - mynetwork
+
+networks:
+  mynetwork:
+    driver: bridge
