@@ -15,9 +15,9 @@ spring:
           starttls:
             enable: true
   datasource:
-    url: jdbc:mysql://localhost:3306/job_application
+    url: jdbc:mysql://root:fedVEmgyCzNfTfpHYmZzgQMnQSSIZttd@mysql-dtvs.railway.internal:3306/railway
     username: root
-    password: pavankumar
+    password: fedVEmgyCzNfTfpHYmZzgQMnQSSIZttd
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
