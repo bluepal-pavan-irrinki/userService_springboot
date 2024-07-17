@@ -12,8 +12,8 @@ COPY src ./src
 # Build the application
 RUN mvn clean package -DskipTests
 
-# Use the official OpenJDK image to run the application.
-FROM openjdk:17-jre-slim
+# Use the correct official OpenJDK image to run the application.
+FROM eclipse-temurin:17-jre-jammy
 WORKDIR /app
 
 # Copy the built jar from the build stage
