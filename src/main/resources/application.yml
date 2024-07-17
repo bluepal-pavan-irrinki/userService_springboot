@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: UserServices
+  config:
+    import: optional:configserver:http://localhost:9090
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: pd.pavanirrinki@gmail.com
+    password: jdmn jtxy pzez rbtr
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+  datasource:
+    url: jdbc:mysql://localhost:3306/job_application
+    username: root
+    password: pavankumar
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+server:
+  port: 9091
