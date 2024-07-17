@@ -1,17 +1,13 @@
-# Use a base image that has Java 11 installed
+# Use the official Maven image to create a build artifact.
+FROM maven:3.8.4-openjdk-11 AS build
+WORKDIR /app
+COPY pom.xml .
+COPY src ./src
+RUN mvn clean package -DskipTests
+
+# Use the official OpenJDK image to run the application.
 FROM openjdk:11-jre-slim
-
-# Add a volume pointing to /tmp
-VOLUME /tmp
-
-# Make port 9091 available to the world outside this container
+WORKDIR /app
+COPY --from=build /app/target/demo-0.0.1-SNAPSHOT.jar app.jar
 EXPOSE 9091
-
-# The application's jar file
-ARG JAR_FILE=target/demo-0.0.1-SNAPSHOT.jar
-
-# Add the application's jar to the container
-ADD ${JAR_FILE} app.jar
-
-# Run the jar file
-ENTRYPOINT ["java", "-jar", "/app.jar"]
+ENTRYPOINT ["java","-jar","app.jar"]
